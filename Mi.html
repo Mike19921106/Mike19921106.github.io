@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+
+
+  <title>每日一句-設定</title>
+  <link rel="stylesheet"
+    href="https://www.gstatic.com/_/freebird/_/ss/k=freebird.v.27u95FzjbIg.L.W.O/am=AIEB/d=1/rs=AMjVe6hYswEo7rB53JCm8JK4vQMrpq6asQ"
+    data-id="_cl" nonce="QfJn6XJR53XOsQKH3QNGIQ">
+
+
+  <style>
+    .TCbR9b {
+      display: none;
+    }
+
+    .KHCwJ {
+      display: none;
+    }
+
+    .RVEQke {
+      background-color: rgb(76, 175, 80);
+      color: rgba(255, 255, 255, 1);
+    }
+
+    .D8bnZd {
+      background-color: rgb(228, 243, 229);
+    }
+
+    .LgNcQe {
+      font-family: 'docs-Roboto';
+      font-weight: 400;
+      font-size: 80pt;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    .M7eMe {
+      font-family: 'docs-Roboto';
+      font-weight: 400;
+      font-size: 60pt;
+      line-height: 1.5;
+      letter-spacing: 0;
+    }
+
+    .sId0Ce,
+    .sId0Ce a {
+      color: rgba(0, 0, 0, 0.66);
+    }
+
+
+
+    body {
+      font-family: "Google Sans", Roboto, Arial, sans-serif;
+      padding: 40px;
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      accent-color: #70840E;
+      cursor: pointer;
+    }
+
+    label {
+      font-size: 40px;
+      color: #202124;
+      cursor: pointer;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      /* 欄位間距 */
+    }
+
+    .container input {
+      padding: 10px;
+      font-size: 30px;
+      border: 1px solid #babdc2;
+      border-radius: 10px;
+      width: calc(30% - 10px);
+      /* 每行4個，扣掉間距 */
+      box-sizing: border-box;
+      outline: none;
+      /* 去掉預設藍色外框 */
+      transition: border-color 1s, box-shadow 1s;
+    }
+
+    .container input:focus {
+      border-color: #73ff85;
+      /* 點擊後邊框顏色 */
+      box-shadow: 0 0 10px rgba(26, 115, 232, 0.6);
+      /* 可加上發光效果 */
+    }
+
+    input[type="checkbox"] {
+      transform: scale(1.8);
+      /* 放大 1.8 倍 */
+      margin-right: 20px;
+      /* 與文字間隔 */
+    }
+
+
+    #voiceGroup {
+      display: <?=say_YN=="false"? "none": "block"?>;
+      /* 預設顯示 block*/
+      /* 預設隱藏 none*/
+    }
+
+
+    #voiceGroup_ALL {
+      display: <?=WHO=="ALL"? "block": "none"?>;
+      /* 預設顯示 block*/
+      /* 預設隱藏 none*/
+    }
+
+    #volumeid {
+      display: <?=WHO=="Siri"? "none": "block"?>;
+      /* 預設顯示 block*/
+      /* 預設隱藏 none*/
+    }
+
+
+
+    /* 美化下拉式選單 */
+    select.custom-select {
+      padding: 20px 20px;
+      font-size: 50px;
+      color: #202124;
+      background-color: white;
+      border: 1px solid #dadce0;
+      border-radius: 4px;
+      box-shadow: none;
+      outline: none;
+      width: 150px;
+      appearance: none;
+      /* 隱藏原生箭頭 */
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="%23666" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+    }
+
+    /* hover 時的樣式 */
+    select.custom-select:hover {
+      border-color: #999;
+    }
+
+    /* focus 時的樣式 */
+    select.custom-select:focus {
+      border-color: #1a73e8;
+      box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+    }
+
+
+
+
+
+    .short-answer {
+      font-size: 40px;
+      padding: 8px;
+      border: none;
+      border-bottom: 1px solid #dadce0;
+      outline: none;
+      width: 100%;
+      box-sizing: border-box;
+      transition: border-color 0.2s;
+      font-family: Roboto, Arial, sans-serif;
+    }
+
+    .short-answer:focus {
+      border-bottom: 2px solid #1a73e8;
+    }
+
+    .submit-btn {
+      background-color: #34a853;
+      /* Google 綠 */
+      color: white;
+      font-size: 50px;
+      font-weight: 500;
+      border: none;
+      border-radius: 4px;
+      padding: 20px 48px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .submit-btn:hover {
+      background-color: #2c8c47;
+      /* hover 深綠 */
+    }
+
+    .submit-btn:active {
+      background-color: #1e6b35;
+      /* 按下更深 */
+    }
+  </style>
+
+
+
+  <link rel="icon" sizes="192x192" href="//ssl.gstatic.com/docs/forms/device_home/android_192.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="//ssl.gstatic.com/docs/forms/device_home/ios_120.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="//ssl.gstatic.com/docs/forms/device_home/ios_152.png">
+  <meta name="msapplication-TileImage" content="//ssl.gstatic.com/docs/forms/device_home/windows_144.png">
+  <meta name="msapplication-TileColor" content="#673ab7">
+  <meta name="theme-color" content="rgb(76, 175, 80)">
+  <base target="_blank">
+
+  <meta itemprop="name" content="每日一句-設定">
+  <meta itemprop="faviconUrl" content="https://ssl.gstatic.com/docs/spreadsheets/forms/forms_icon_2023q4.ico">
+  <meta itemprop="thumbnailUrl" content="https://ssl.gstatic.com/docs/forms/social/social-forms-big-2.png">
+  <meta itemprop="image" content="https://ssl.gstatic.com/docs/forms/social/social-forms-big-2.png">
+  <meta itemprop="imageUrl" content="https://ssl.gstatic.com/docs/forms/social/social-forms-big-2.png">
+
+
+</head>
+
+<body class="D8bnZd ">
+
+
+
+  <div>
+    <div class="KHCwJ"></div>
+    <div>
+      <form>
+        <div>
+          <div>
+            <div>
+              <div class="m7w29c tIvQIf">
+                <div class="JH79cc RVEQke "></div>
+                <div>
+                  <div>
+                    <div class="LgNcQe" dir="auto" role="heading" aria-level="1">每日一句-設定</div>
+                  </div>
+                </div>
+                <div class="zAVwcb"></div>
+                <div>
+                  <div>
+                    <div class="meSK8 M7eMe" role="heading" aria-level="2">專屬序號：
+                    </div>
+                    <div>
+                      <input type="text" class="short-answer" placeholder="<?= JHU ?>" value="<?= JHU ?>" style="width:55%;">
+                      <button type="button" class="submit-btn"  onclick="copyText()">複製序號</button>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="Qr7Oae" role="listitem">
+                <div class="geS5n">
+                  <div>
+                    <div>
+                      <div class="HoXoMd D1wxyf RjsPE">
+                        <span class="M7eMe">暱稱</span>
+                      </div>
+                      <div class="gubaDc OIC90c RjsPE">希望我如何呼喊［你/妳］</div>
+                    </div>
+                  </div>
+                  <div>
+                    <div>
+
+                      <div>
+                        <input type="text" class="short-answer" placeholder="您的暱稱" id="Nickname"  value="<?= Nickname ?>">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="Qr7Oae" role="listitem">
+                <div>
+                  <div class="geS5n">
+                    <div>
+                      <div>
+                        <div class="HoXoMd D1wxyf RjsPE" role="heading" aria-level="3" aria-describedby="i10">
+                          <span class="M7eMe">［你/妳］的生日</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div>
+                        <div>
+                          <div class="a7KROc">
+                            <div>
+
+                              <label>
+                                <select class="custom-select" id="month" name="month">
+                                  <option value=""></option>
+                                  <option value="1" <?= month == "1" ? "selected" : "" ?>>1</option>
+                                  <option value="2" <?= month == "2" ? "selected" : "" ?>>2</option>
+                                  <option value="3" <?= month == "3" ? "selected" : "" ?>>3</option>
+                                  <option value="4" <?= month == "4" ? "selected" : "" ?>>4</option>
+                                  <option value="5" <?= month == "5" ? "selected" : "" ?>>5</option>
+                                  <option value="6" <?= month == "6" ? "selected" : "" ?>>6</option>
+                                  <option value="7" <?= month == "7" ? "selected" : "" ?>>7</option>
+                                  <option value="8" <?= month == "8" ? "selected" : "" ?>>8</option>
+                                  <option value="9" <?= month == "9" ? "selected" : "" ?>>9</option>
+                                  <option value="10" <?= month == "10" ? "selected" : "" ?>>10</option>
+                                  <option value="11" <?= month == "11" ? "selected" : "" ?>>11</option>
+                                  <option value="12" <?= month == "12" ? "selected" : "" ?>>12</option>
+                                </select>
+                              </label>
+                            </div>
+                            <div class="M7eMe">月</div>
+                            <div>
+
+                              <label>
+                                <select class="custom-select" id="day" name="day">
+                                  <option value=""></option>
+                                  <option value="1" <?= day == "1" ? "selected" : "" ?>>1</option>
+                                  <option value="2" <?= day == "2" ? "selected" : "" ?>>2</option>
+                                  <option value="3" <?= day == "3" ? "selected" : "" ?>>3</option>
+                                  <option value="4" <?= day == "4" ? "selected" : "" ?>>4</option>
+                                  <option value="5" <?= day == "5" ? "selected" : "" ?>>5</option>
+                                  <option value="6" <?= day == "6" ? "selected" : "" ?>>6</option>
+                                  <option value="7" <?= day == "7" ? "selected" : "" ?>>7</option>
+                                  <option value="8" <?= day == "8" ? "selected" : "" ?>>8</option>
+                                  <option value="9" <?= day == "9" ? "selected" : "" ?>>9</option>
+                                  <option value="10" <?= day == "10" ? "selected" : "" ?>>10</option>
+                                  <option value="11" <?= day == "11" ? "selected" : "" ?>>11</option>
+                                  <option value="12" <?= day == "12" ? "selected" : "" ?>>12</option>
+                                  <option value="13" <?= day == "13" ? "selected" : "" ?>>13</option>
+                                  <option value="14" <?= day == "14" ? "selected" : "" ?>>14</option>
+                                  <option value="15" <?= day == "15" ? "selected" : "" ?>>15</option>
+                                  <option value="16" <?= day == "16" ? "selected" : "" ?>>16</option>
+                                  <option value="17" <?= day == "17" ? "selected" : "" ?>>17</option>
+                                  <option value="18" <?= day == "18" ? "selected" : "" ?>>18</option>
+                                  <option value="19" <?= day == "19" ? "selected" : "" ?>>19</option>
+                                  <option value="20" <?= day == "20" ? "selected" : "" ?>>20</option>
+                                  <option value="21" <?= day == "21" ? "selected" : "" ?>>21</option>
+                                  <option value="22" <?= day == "22" ? "selected" : "" ?>>22</option>
+                                  <option value="23" <?= day == "23" ? "selected" : "" ?>>23</option>
+                                  <option value="24" <?= day == "24" ? "selected" : "" ?>>24</option>
+                                  <option value="25" <?= day == "25" ? "selected" : "" ?>>25</option>
+                                  <option value="26" <?= day == "26" ? "selected" : "" ?>>26</option>
+                                  <option value="27" <?= day == "27" ? "selected" : "" ?>>27</option>
+                                  <option value="28" <?= day == "28" ? "selected" : "" ?>>28</option>
+                                  <option value="29" <?= day == "29" ? "selected" : "" ?>>29</option>
+                                  <option value="30" <?= day == "30" ? "selected" : "" ?>>30</option>
+                                  <option value="31" <?= day == "31" ? "selected" : "" ?>>31</option>
+                                </select>
+                              </label>
+                            </div>
+                            <div class="M7eMe">日</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="Qr7Oae" role="listitem">
+                <div>
+                  <div class="geS5n">
+                    <div>
+                      <div>
+                        <div class="HoXoMd D1wxyf RjsPE" role="heading" aria-level="3">
+                          <span class="M7eMe">形容詞</span>
+                        </div>
+                        <div class="gubaDc OIC90c RjsPE">［你/妳］想要如何被形容</div>
+                      </div>
+                    </div>
+                    <div>
+                      <div>
+
+                        <div class="checkbox-group">
+                          <input type="checkbox" id="cute" name="answer" value="可愛" <?= cute=="" ? "" : "checked" ?>>
+                          <label for="cute">可愛</label>
+                          <div>　　</div>
+                          <input type="checkbox" id="beautiful" name="answer" value="美麗" <?= beautiful=="" ? "" : "checked" ?>>
+                          <label for="beautiful">美麗</label>
+                          <div>　　</div>
+                          <input type="checkbox" id="pretty" name="answer" value="漂亮" <?= pretty=="" ? "" : "checked" ?>>
+                          <label for="pretty">漂亮</label>
+                        </div>
+
+                        <div class="checkbox-group">
+                          <input type="checkbox" id="daimeng" name="answer" value="呆萌" <?= daimeng=="" ? "" : "checked" ?>>
+                          <label for="daimeng">呆萌</label>
+                          <div>　　</div>
+                          <input type="checkbox" id="sexy" name="answer" value="性感" <?= sexy=="" ? "" : "checked" ?>>
+                          <label for="sexy">性感</label>
+                          <div>　　</div>
+                          <input type="checkbox" id="sweet" name="answer" value="甜甜" <?= sweet=="" ? "" : "checked" ?>>
+                          <label for="sweet">甜甜</label>
+                        </div>
+                        <div class="checkbox-group">
+                          <input type="checkbox" id="kind" name="answer" value="善良" <?= kind=="" ? "" : "checked" ?>>
+                          <label for="kind">善良</label>
+                          <div>　　</div>
+                          <input type="checkbox" id="evil" name="answer" value="邪惡" <?= evil=="" ? "" : "checked" ?>>
+                          <label for="evil">邪惡</label>
+                          <div>　　</div>
+                          <input type="checkbox" id="handsome" name="answer" value="帥氣" <?= handsome=="" ? "" : "checked" ?>>
+                          <label for="handsome">帥氣</label>
+                        </div>
+                        <div class="checkbox-group">
+                          <input type="checkbox" id="cheerful" name="answer" value="爽朗" <?= cheerful=="" ? "" : "checked" ?>>
+                          <label for="cheerful">爽朗</label>
+                          <div>　　</div>
+                          <input type="checkbox" id="sunny" name="answer" value="開朗" <?= sunny=="" ? "" : "checked" ?>>
+                          <label for="sunny">開朗</label>
+                          <div>　　</div>
+                          <input type="checkbox" id="funny" name="answer" value="幽默" <?= funny=="" ? "" : "checked" ?>>
+                          <label for="funny">幽默</label>
+                        </div>
+                        <div class="checkbox-group">
+                          <input type="checkbox" id="reliable" name="answer" value="可靠" <?= reliable=="" ? "" : "checked" ?>>
+                          <label for="reliable">可靠</label>
+                          <div>　　</div>
+                          <input type="checkbox" id="hardworking" name="answer" value="努力" <?= hardworking=="" ? "" : "checked" ?>>
+                          <label for="hardworking">努力</label>
+                          <div>　　</div>
+                          <input type="checkbox" id="smart" name="answer" value="聰明" <?= smart=="" ? "" : "checked" ?>>
+                          <label for="smart">聰明</label>
+                        </div>
+                        <div class="checkbox-group">
+                          <input type="checkbox" id="gentle" name="answer" value="溫柔" <?= gentle=="" ? "" : "checked" ?>>
+                          <label for="gentle">溫柔</label>
+                          <div>　　</div>
+                          <input type="checkbox" id="tasteful" name="answer" value="有品味" <?= tasteful=="" ? "" : "checked" ?>>
+                          <label for="tasteful">有品味</label>
+                          <div>　　</div>
+                          <input type="checkbox" id="unique" name="answer" value="有個性" <?= unique=="" ? "" : "checked" ?>>
+                          <label for="unique">有個性</label>
+                        </div>
+                        <div class="checkbox-group">
+                          <input type="checkbox" id="lifestyle" name="answer" value="懂生活" <?= lifestyle=="" ? "" : "checked" ?>>
+                          <label for="lifestyle">懂生活</label>
+                          <div>　　</div>
+                          <input type="checkbox" id="charming" name="answer" value="有魅力" <?= charming=="" ? "" : "checked" ?>>
+                          <label for="charming">有魅力</label>
+                          <div>　　</div>
+                          <input type="checkbox" id="attractive" name="answer" value="有吸引力" <?= attractive=="" ? "" : "checked" ?>>
+                          <label for="attractive">有吸引力</label>
+                        </div>
+
+                        <div class="checkbox-group">
+                          <input type="checkbox" id="gorgeous" name="answer" value="貌美如花" <?= gorgeous=="" ? "" : "checked" ?>>
+                          <label for="gorgeous">貌美如花</label>
+                          <div>　　</div>
+                          <input type="checkbox" id="graceful" name="answer" value="花容月貌" <?= graceful=="" ? "" : "checked" ?>>
+                          <label for="graceful">花容月貌</label>
+                        </div>
+                        <div class="checkbox-group">
+                          <input type="checkbox" id="elegant" name="answer" value="玉樹臨風" <?= elegant=="" ? "" : "checked" ?>>
+                          <label for="elegant">玉樹臨風</label>
+                          <div>　　</div>
+                          <input type="checkbox" id="cool" name="answer" value="英俊瀟灑" <?= cool=="" ? "" : "checked" ?>>
+                          <label for="cool">英俊瀟灑</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="Qr7Oae" role="listitem">
+                <div>
+                  <div class="geS5n">
+                    <div>
+                      <div>
+                        <div class="HoXoMd D1wxyf RjsPE" role="heading" aria-level="3">
+                          <span class="M7eMe">其他自訂義的形容詞</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div>
+                        <div>
+                          <div>
+                            <div class="container">
+                              <input id="input1"  type="text" placeholder="1.請輸入形容詞" value="<?= input1 ?>">
+                              <input id="input2"  type="text" placeholder="2.請輸入形容詞" value="<?= input2 ?>">
+                              <input id="input3"  type="text" placeholder="3.請輸入形容詞" value="<?= input3 ?>">
+                              <input id="input4"  type="text" placeholder="4.請輸入形容詞" value="<?= input4 ?>">
+                              <input id="input5"  type="text" placeholder="5.請輸入形容詞" value="<?= input5 ?>">
+                              <input id="input6"  type="text" placeholder="6.請輸入形容詞" value="<?= input6 ?>">
+                              <input id="input7"  type="text" placeholder="7.請輸入形容詞" value="<?= input7 ?>">
+                              <input id="input8"  type="text" placeholder="8.請輸入形容詞" value="<?= input8 ?>">
+                              <input id="input9"  type="text" placeholder="9.請輸入形容詞" value="<?= input9 ?>">
+                              <input id="input10"  type="text" placeholder="10.請輸入形容詞" value="<?= input10 ?>">
+                              <input id="input11"  type="text" placeholder="11.請輸入形容詞" value="<?= input11 ?>">
+                              <input id="input12"  type="text" placeholder="12.請輸入形容詞" value="<?= input12 ?>">
+                              <input id="input13"  type="text" placeholder="13.請輸入形容詞" value="<?= input13 ?>">
+                              <input id="input14"  type="text" placeholder="14.請輸入形容詞" value="<?= input14 ?>">
+                              <input id="input15"  type="text" placeholder="15.請輸入形容詞" value="<?= input15 ?>">
+                              <input id="input16"  type="text" placeholder="16.請輸入形容詞" value="<?= input16 ?>">
+                              <input id="input17"  type="text" placeholder="17.請輸入形容詞" value="<?= input17 ?>">
+                              <input id="input18"  type="text" placeholder="18.請輸入形容詞" value="<?= input18 ?>">
+                              <input id="input19"  type="text" placeholder="19.請輸入形容詞" value="<?= input19 ?>">
+                              <input id="input20"  type="text" placeholder="20.請輸入形容詞" value="<?= input20 ?>">
+                              <input id="input21"  type="text" placeholder="21.請輸入形容詞" value="<?= input21 ?>">
+                              <input id="input22"  type="text" placeholder="22.請輸入形容詞" value="<?= input22 ?>">
+                              <input id="input23"  type="text" placeholder="23.請輸入形容詞" value="<?= input23 ?>">
+                              <input id="input24"  type="text" placeholder="24.請輸入形容詞" value="<?= input24 ?>">
+                              <input id="input25"  type="text" placeholder="25.請輸入形容詞" value="<?= input25 ?>">
+                              <input id="input26"  type="text" placeholder="26.請輸入形容詞" value="<?= input26 ?>">
+                              <input id="input27"  type="text" placeholder="27.請輸入形容詞" value="<?= input27 ?>">
+                              <input id="input28"  type="text" placeholder="28.請輸入形容詞" value="<?= input28 ?>">
+                              <input id="input29"  type="text" placeholder="29.請輸入形容詞" value="<?= input29 ?>">
+                              <input id="input30"  type="text" placeholder="30.請輸入形容詞" value="<?= input30 ?>">
+                              <input id="input31"  type="text" placeholder="31.請輸入形容詞" value="<?= input31 ?>">
+                              <input id="input32"  type="text" placeholder="32.請輸入形容詞" value="<?= input32 ?>">
+                              <input id="input33"  type="text" placeholder="33.請輸入形容詞" value="<?= input33 ?>">
+                              <input id="input34"  type="text" placeholder="34.請輸入形容詞" value="<?= input34 ?>">
+                              <input id="input35"  type="text" placeholder="35.請輸入形容詞" value="<?= input35 ?>">
+                              <input id="input36"  type="text" placeholder="36.請輸入形容詞" value="<?= input36 ?>">
+                              <input id="input37"  type="text" placeholder="37.請輸入形容詞" value="<?= input37 ?>">
+                              <input id="input38"  type="text" placeholder="38.請輸入形容詞" value="<?= input38 ?>">
+                              <input id="input39"  type="text" placeholder="39.請輸入形容詞" value="<?= input39 ?>">
+                              <input id="input40"  type="text" placeholder="40.請輸入形容詞" value="<?= input40 ?>">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="Qr7Oae" role="listitem">
+                <div>
+                  <div class="geS5n">
+                    <div>
+                      <div>
+                        <div class="HoXoMd D1wxyf RjsPE" role="heading" aria-level="3" aria-describedby="i101">
+                          <span class="M7eMe">希望說出來嗎?</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div>
+                        <div>
+                          <div>
+
+                            <label>
+                              <select class="custom-select" id="say_YN" name="say_YN" >
+                                <option value= "true" <?= say_YN  == "true" ? "selected" : "" ?>>是</option>
+                                <option value= "false" <?= say_YN == "false" ? "selected" : "" ?>>否</option>
+                              </select>
+                            </label>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div id="voiceGroup">
+
+                <div class="Qr7Oae" role="listitem">
+                  <div>
+                    <div class="geS5n">
+                      <div>
+                        <div>
+                          <div class="HoXoMd D1wxyf RjsPE" role="heading" aria-level="3">
+                            <span class="M7eMe">啟用聲音時機</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <div>
+
+                          <div class="checkbox-group">
+                            <input type="checkbox" id="Week_0" name="answer" value="0" <?= Week_0=="" ? "" : "checked" ?>>
+                            <label for="Week_0">週日</label>
+                            <div>　　</div>
+                            <input type="checkbox" id="Week_1" name="answer" value="1" <?= Week_1=="" ? "" : "checked" ?>>
+                            <label for="Week_1">週一</label>
+                            <div>　　</div>
+                            <input type="checkbox" id="Week_2" name="answer" value="2" <?= Week_2=="" ? "" : "checked" ?>>
+                            <label for="Week_2">週二</label>
+                            <div>　　</div>
+                            <input type="checkbox" id="Week_3" name="answer" value="3" <?= Week_3=="" ? "" : "checked" ?>>
+                            <label for="Week_3">週三</label>
+                          </div>
+                          <div class="checkbox-group">
+                            <input type="checkbox" id="Week_4" name="answer" value="4" <?= Week_4=="" ? "" : "checked" ?>>
+                            <label for="Week_4">週四</label>
+                            <div>　　</div>
+                            <input type="checkbox" id="Week_5" name="answer" value="5" <?= Week_5=="" ? "" : "checked" ?>>
+                            <label for="Week_5">週五</label>
+                            <div>　　</div>
+                            <input type="checkbox" id="Week_6" name="answer" value="6" <?= Week_6=="" ? "" : "checked" ?>>
+                            <label for="Week_6">週六</label>
+                            <div>　　</div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+
+
+                <div class="Qr7Oae" role="listitem">
+                  <div>
+                    <div class="geS5n">
+                      <div>
+                        <div>
+                          <div class="HoXoMd D1wxyf RjsPE" role="heading" aria-level="3" aria-describedby="i106">
+                            <span class="M7eMe">試聽聲音</span><span class="vnumgf" id="i106"> *</span>
+                          </div>
+                          <div>
+                            <span style="font-size:20px">不要為打翻的牛奶而哭泣</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <audio id="player" preload="auto"></audio>
+                        <div class="checkbox-group">
+                          <button type="button" onclick="play('B1')" style="padding: 10px 20px;font-size: 40px;background-color: #06C755;color: white;border: none;border-radius: 8px;">男1-Yi Min ▶</button>
+                          <div>　　</div>
+                          <button type="button" onclick="play('B2')" style="padding: 10px 20px;font-size: 40px;background-color: #06C755;color: white;border: none;border-radius: 8px;">男2-Xiaoyu ▶</button>
+                          <div>　　</div>
+                          <button type="button" onclick="play('B3')" style="padding: 10px 20px;font-size: 40px;background-color: #06C755;color: white;border: none;border-radius: 8px;">男3-Kevin Tu ▶</button>
+                        </div>
+                        <div class="checkbox-group">
+                          <button type="button" onclick="play('G1')" style="padding: 10px 20px;font-size: 40px;background-color: #06C755;color: white;border: none;border-radius: 8px;">女1-Anna Su ▶</button>
+                          <div>　　</div>
+                          <button type="button" onclick="play('G2')" style="padding: 10px 20px;font-size: 40px;background-color: #06C755;color: white;border: none;border-radius: 8px;">女2-Ling ▶</button>
+                          <div>　　</div>
+                          <button type="button" onclick="play('G3')" style="padding: 10px 20px;font-size: 40px;background-color: #06C755;color: white;border: none;border-radius: 8px;">女3-Stacy ▶</button>
+
+
+
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="Qr7Oae" role="listitem">
+                  <div>
+                    <div class="geS5n">
+                      <div>
+                        <div>
+                          <div class="HoXoMd D1wxyf RjsPE" role="heading" aria-level="3" aria-describedby="i106">
+                            <span class="M7eMe">希望的聲音</span><span class="vnumgf" id="i106"> *</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div>
+
+                        <label>
+                                <select class="custom-select" id="WHO" name="WHO" >
+                                  <option value= "Siri"  <?= WHO  ==  "Siri"  ? "selected" : "" ?>>Siri </option>
+                                  <option value= "ALL"   <?= WHO  ==  "ALL"   ? "selected" : "" ?>>隨機 </option>
+                                  <option value= "BOY1"  <?= WHO  ==  "BOY1"  ? "selected" : "" ?>>男1-Yi Min  </option>
+                                  <option value= "BOY2"  <?= WHO  ==  "BOY2"  ? "selected" : "" ?>>男2-Xiaoyu  </option>
+                                  <option value= "BOY3"  <?= WHO  ==  "BOY3"  ? "selected" : "" ?>>男3-Kevin Tu  </option>
+                                  <option value= "GIRL1" <?= WHO  ==  "GIRL1" ? "selected" : "" ?>>女1-Anna Su  </option>
+                                  <option value= "GIRL2" <?= WHO  ==  "GIRL2" ? "selected" : "" ?>>女2-Ling  </option>
+                                  <option value= "GIRL3" <?= WHO  ==  "GIRL3" ? "selected" : "" ?>>女3-Stacy  </option>
+                                </select>
+                              </label>
+
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+                <div id="voiceGroup_ALL">
+                  <div class="Qr7Oae" role="listitem">
+                    <div>
+                      <div class="geS5n">
+                        <div>
+                          <div>
+                            <div class="HoXoMd D1wxyf RjsPE" role="heading" aria-level="3" aria-describedby="i106">
+                              <span class="M7eMe">請挑選聲音</span><span class="vnumgf" id="i106"> *</span>
+                            </div>
+                          </div>
+                        </div>
+
+
+                        <div class="checkbox-group">
+                          <input type="checkbox" id="ALL_1" name="answer" value="BOY1" <?= ALL_1=="" ? "" : "checked" ?>>
+                          <label for="ALL_1">男1-Yi Min</label>
+                          <div>　　</div>
+                          <input type="checkbox" id="ALL_2" name="answer" value="BOY2" <?= ALL_2=="" ? "" : "checked" ?>>
+                          <label for="ALL_2">男2-Xiaoyu</label>
+                          <div>　　</div>
+                          <input type="checkbox" id="ALL_3" name="answer" value="BOY3" <?= ALL_3=="" ? "" : "checked" ?>>
+                          <label for="ALL_3">男3-Kevin Tu</label>
+                        </div>
+                        <div class="checkbox-group">
+                          <input type="checkbox" id="ALL_4" name="answer" value="GIRL1" <?= ALL_4=="" ? "" : "checked" ?>>
+                          <label for="ALL_4">女1-Anna Su</label>
+                          <div>　　</div>
+                          <input type="checkbox" id="ALL_5" name="answer" value="GIRL2" <?= ALL_5=="" ? "" : "checked" ?>>
+                          <label for="ALL_5">女2-Ling</label>
+                          <div>　　</div>
+                          <input type="checkbox" id="ALL_6" name="answer" value="GIRL3" <?= ALL_6=="" ? "" : "checked" ?>>
+                          <label for="ALL_6">女3-Stacy</label>
+                        </div>
+
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+                <div id="volumeid" class="Qr7Oae" role="listitem">
+                  <div class="geS5n">
+                    <div>
+                      <div>
+                        <div class="HoXoMd D1wxyf RjsPE">
+                          <span class="M7eMe">音量</span>
+                        </div>
+                        <div class="gubaDc OIC90c RjsPE">希望播放時的音量(5~100%)</div>
+                      </div>
+                    </div>
+                    <div>
+                      <div>
+                        <div>
+                          <input type="text" class="short-answer"  placeholder="音量大小"  id="volumenum" value="<?= volumenum ?>"  oninput="this.value = this.value.replace(/[^0-9]/g,'');"  onblur="if(this.value !== ''){ if(this.value < 5) this.value = 5; if(this.value > 100) this.value = 100;}" >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+              </div>
+            </div>
+            <div>
+              <div>
+                <div>
+                  <div>
+                    <button type="button" class="submit-btn" onclick="sendData()">提交</button>
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </form>
+      <div>
+        <div class="v1CNvb sId0Ce">Google 表單 - <a href="mailto:mike116j@gmail.com?subject=意見回饋&body=您好，這是我是____想與您聯絡"
+            target="_blank">聯絡表單擁有者</a>
+          - <a href="https://policies.google.com/terms" target="_blank">服務條款</a> - <a
+            href="https://policies.google.com/privacy" target="_blank">隱私權政策</a>
+          <p></p>
+        </div>
+        <div class="I3zNcc yF4pU"><a dir="auto"
+            href="//www.google.com/forms/about/?utm_source=product&utm_medium=forms_logo&utm_campaign=forms"><img src="https://www.gstatic.com/images/branding/googlelogo/svg/googlelogo_dark_clr_74x24px.svg" alt="Google" height="24px" width="74px" />&nbsp;<span class="sUXvCd">表單</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 監聽選項變化
+    document.addEventListener("DOMContentLoaded", function () {
+      const voiceGroup = document.getElementById("voiceGroup");
+      document.getElementById("say_YN").addEventListener("change", function () {
+        if (this.value == "false") {
+          voiceGroup.style.display = "none";
+        } else {
+          voiceGroup.style.display = "block";
+        }
+      });
+
+    
+      const voiceGroup_ALL = document.getElementById("voiceGroup_ALL");
+      document.getElementById("WHO").addEventListener("change", function () {
+        if (this.value == "ALL") {
+          voiceGroup_ALL.style.display = "block";
+        } else {
+          voiceGroup_ALL.style.display = "none";
+        }
+      });
+    
+
+     const volumeid = document.getElementById("volumeid");
+     document.getElementById("WHO").addEventListener("change", function () {
+       if (this.value == "Siri") {
+         volumeid.style.display = "none";
+       } else {
+         volumeid.style.display = "block";
+       }
+     });
+    
+    });
+
+
+
+    function copyText() {
+      const text = "<?= JHU ?>";
+      navigator.clipboard.writeText(text).then(() => {
+        alert("已複製-專屬序號");
+      }).catch(err => {
+        alert("複製失敗: " + err);
+      });
+    }
+    
+
+    function sendData() {
+      var i;
+      var inputs = [];
+      for ( i = 1; i <= 40; i++) {
+        inputs.push(document.getElementById("input" + i).value);
+      }
+
+      var ALL_sun = [];
+      var z = 0;
+      for ( i = 1; i <= 6; i++) {
+        if(document.getElementById("ALL_" + i).checked){
+          z++;
+          ALL_sun.push(document.getElementById("ALL_" + i).value);
+        }else{
+          ALL_sun.push("");
+        }
+      }
+
+      if(z==0){
+        ALL_sun = [];
+        for (i = 1; i <= 6; i++) {
+          ALL_sun.push(document.getElementById("ALL_" + i).value);
+        }
+      }
+
+      var Week_all=[];
+      z=0;
+      for ( i = 0; i <= 6; i++) {
+        if(document.getElementById("Week_" + i).checked){
+          z++;
+          Week_all.push(document.getElementById("Week_" + i).value);
+        }else{
+          Week_all.push("");
+        }
+      }
+      if(z==0){
+        Week_all = [];
+        for (i = 1; i <= 6; i++) {
+          Week_all.push(document.getElementById("Week_" + i).value);
+        }
+      }
+
+
+      
+      const data = {
+        month: document.getElementById("month").value,
+        day: document.getElementById("day").value,
+        Nickname:document.getElementById("Nickname").value,
+        say_YN: document.getElementById("say_YN").value,
+        cute: document.getElementById("cute").checked ? document.getElementById("cute").value : "",
+        beautiful: document.getElementById("beautiful").checked ? document.getElementById("beautiful").value : "",
+        pretty: document.getElementById("pretty").checked ? document.getElementById("pretty").value : "",
+        daimeng: document.getElementById("daimeng").checked ? document.getElementById("daimeng").value : "",
+        sexy: document.getElementById("sexy").checked ? document.getElementById("sexy").value : "",
+        sweet: document.getElementById("sweet").checked ? document.getElementById("sweet").value : "",
+        kind: document.getElementById("kind").checked ? document.getElementById("kind").value : "",
+        evil: document.getElementById("evil").checked ? document.getElementById("evil").value : "",
+        handsome: document.getElementById("handsome").checked ? document.getElementById("handsome").value : "",
+        cheerful: document.getElementById("cheerful").checked ? document.getElementById("cheerful").value : "",
+        sunny: document.getElementById("sunny").checked ? document.getElementById("sunny").value : "",
+        funny: document.getElementById("funny").checked ? document.getElementById("funny").value : "",
+        reliable: document.getElementById("reliable").checked ? document.getElementById("reliable").value : "",
+        hardworking: document.getElementById("hardworking").checked ? document.getElementById("hardworking").value : "",
+        smart: document.getElementById("smart").checked ? document.getElementById("smart").value : "",
+        gentle: document.getElementById("gentle").checked ? document.getElementById("gentle").value : "",
+        tasteful: document.getElementById("tasteful").checked ? document.getElementById("tasteful").value : "",
+        unique: document.getElementById("unique").checked ? document.getElementById("unique").value : "",
+        lifestyle: document.getElementById("lifestyle").checked ? document.getElementById("lifestyle").value : "",
+        charming: document.getElementById("charming").checked ? document.getElementById("charming").value : "",
+        attractive: document.getElementById("attractive").checked ? document.getElementById("attractive").value : "",
+        gorgeous: document.getElementById("gorgeous").checked ? document.getElementById("gorgeous").value : "",
+        graceful: document.getElementById("graceful").checked ? document.getElementById("graceful").value : "",
+        elegant: document.getElementById("elegant").checked ? document.getElementById("elegant").value : "",
+        cool: document.getElementById("cool").checked ? document.getElementById("cool").value : "",
+        volumenum: document.getElementById("volumenum").value,
+        inputs: inputs,
+        WHO: document.getElementById("WHO").value,
+        ALL_sun:ALL_sun,
+        Week_all:Week_all,
+        
+        "destination": "Google",
+        Mike:"<?= JHU ?>"
+      };
+
+
+
+
+      fetch("https://script.google.com/macros/s/AKfycbw510d7fPkSa-AP5SwB9y1nKAv13iJVhfErRojNjg5cgIA1xy082WzQJomI01HJ71Gn/exec", {  
+          // 換成你的    Apps Script URL
+        method: "POST",
+        body: JSON.stringify(data),
+        mode: "no-cors"  
+      }).then(() => { window.location.href  ="https://script.google.com/macros/s/AKfycbw510d7fPkSa-AP5SwB9y1nKAv13iJVhfErRojNjg5cgIA1xy082WzQJomI01HJ71Gn/exec?Mike=OK&JHU=<?= JHU ?>";});
+      
+
+
+       //;
+        
+    };
+    
+    
+
+    const player = document.getElementById("player");
+    
+    function play(type) {
+      const sounds = {
+        B1: "<?= sound_B1_base64 ?>",
+        B2: "<?= sound_B2_base64 ?>",
+        B3: "<?= sound_B3_base64 ?>",
+        G1: "<?= sound_G1_base64 ?>",
+        G2: "<?= sound_G2_base64 ?>",
+        G3: "<?= sound_G3_base64 ?>",
+      };
+    
+      const url = sounds[type];
+    
+      if (!url) {
+        console.log("未知音效:", type);
+        return;
+      }
+    
+      // 🔥 重要：避免卡住或沒聲音
+      player.pause();
+      player.currentTime = 0;
+    
+      // 🔥 換音檔
+      player.src = url;
+    
+      // 🔥 播放（避免 Chrome 卡住）
+      const playPromise = player.play();
+    
+      if (playPromise !== undefined) {
+        playPromise.catch(err => {
+          console.log("播放失敗:", err);
+        });
+      }
+    }
+  </script>
+
+
+
+
+</body>
+
+</html>
